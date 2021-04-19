@@ -39,10 +39,10 @@ module "vpc" {
 resource "aws_vpc_endpoint" "example" {
   service_name = format("com.amazonaws.%s.transfer.server", data.aws_region.current.name)
 
-  vpc_id = module.vpc.vpc_id
-  vpc_endpoint_type = "Interface"
+  vpc_id             = module.vpc.vpc_id
+  vpc_endpoint_type  = "Interface"
   security_group_ids = [aws_security_group.example.id]
-  subnet_ids = module.vpc.private_subnets
+  subnet_ids         = module.vpc.private_subnets
 
   tags = merge(
     local.tags,
@@ -53,8 +53,8 @@ resource "aws_vpc_endpoint" "example" {
 }
 
 resource "aws_security_group" "example" {
-  name        = random_string.this.result
-  vpc_id      = module.vpc.vpc_id
+  name   = random_string.this.result
+  vpc_id = module.vpc.vpc_id
 
   tags = merge(
     local.tags,
@@ -65,7 +65,7 @@ resource "aws_security_group" "example" {
 }
 
 
-module "vpc_external_vpce" { 
+module "vpc_external_vpce" {
   source = "../.."
 
   prefix = "aws-transfer-tftest${random_string.this.result}"
@@ -73,6 +73,6 @@ module "vpc_external_vpce" {
   endpoint_type = "VPC_ENDPOINT"
 
   vpc_endpoint_id = aws_vpc_endpoint.example.id
-  
+
   tags = local.tags
 }
