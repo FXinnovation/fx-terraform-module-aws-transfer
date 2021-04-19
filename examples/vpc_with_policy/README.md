@@ -1,4 +1,6 @@
-# Default example
+# VPC private endpoint example
+
+With IAM role create and VPC Endpoint creation
 
 ## Usage
 
@@ -12,30 +14,20 @@
 
 | Name | Version |
 |------|---------|
-| terraform | >= 0.14.0 |
+| terraform | >= 0.13.0 |
 | aws | >= 2.0 |
-| random | >= 3.0 |
 
 ## Providers
 
-| Name | Version |
-|------|---------|
-| aws | >= 2.0 |
-| random | >= 3.0 |
+No provider.
 
 ## Modules
 
-| Name | Source | Version |
-|------|--------|---------|
-| default | ../.. |  |
-| vpc | terraform-aws-modules/vpc/aws | 2.78.0 |
+No Modules.
 
 ## Resources
 
-| Name |
-|------|
-| [aws_availability_zones](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/availability_zones) |
-| [random_string](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/string) |
+No resources.
 
 ## Inputs
 

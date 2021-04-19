@@ -34,10 +34,27 @@ module "vpc" {
   tags = local.tags
 }
 
-module "default" {
+module "vpc_with_policy" { 
   source = "../.."
 
   prefix = "aws-transfer-tftest${random_string.this.result}"
+
+  endpoint_type = "VPC_ENDPOINT"
+
+  subnet_ids = module.vpc.public_subnets
+  subnet_ids_count = 2
+  vpc_id = module.vpc.vpc_id
+
+  iam_cloud_watch_iam_role_create = true
+  iam_cloud_watch_iam_policy_name = "cloudwatch-transfer"
+  iam_cloud_watch_iam_role_name = "cloudwatch-transfer"
+
+  create_security_group = true 
+  security_group_name = "aws_transfer"
+  allowed_cidrs = ["0.0.0.0/0"]
+
+  create_vpc_endpoint = true
+  vpc_endpoint_name = "transfer"
 
   tags = local.tags
 }
