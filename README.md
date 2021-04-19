@@ -1,6 +1,6 @@
-# terraform-module-multi-template
+# terraform-module-aws-transfer
 
-Template repository for public terraform modules
+This module create AWS Transfer
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 Error: no lines in file
