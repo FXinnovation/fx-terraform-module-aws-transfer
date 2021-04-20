@@ -42,7 +42,7 @@ variable "server_role_arn" {
 }
 
 variable "home_directory_mappings" {
-  description = <<DOCUMENTATION
+  description = <<-DOCUMENTATION
 List of map of logical directory mappings that specify what S3 paths and keys should be visible to your user and how you want to make them visible.
 This map must have the following keys:
  * entry: Represents an entry and a target.

@@ -205,7 +205,7 @@ variable "vpc_endpoint_name" {
 # Users
 #####
 variable "users" {
-  description = <<DOCUMENTATION
+  description = <<-DOCUMENTATION
 A list of object that represent a user:
  * username (mandatory): The username
  * public_ssh_key (mandatory): The public ssh key to associate with the user
