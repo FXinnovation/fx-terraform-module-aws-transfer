@@ -50,6 +50,7 @@ resource "aws_vpc_endpoint" "this" {
   service_name = format("com.amazonaws.%s.transfer.server", data.aws_region.this.name)
 
   vpc_id              = var.vpc_id
+  subnet_ids          = var.subnet_ids
   vpc_endpoint_type   = "Interface"
   private_dns_enabled = var.vpc_endpoint_private_dns_enabled
   security_group_ids  = compact(concat(aws_security_group.this.*.id, var.vpc_endpoint_security_groups))
@@ -62,13 +63,6 @@ resource "aws_vpc_endpoint" "this" {
       Name = format("%s%s", var.prefix, var.vpc_endpoint_name)
     }
   )
-}
-
-resource "aws_vpc_endpoint_subnet_association" "this" {
-  count = local.should_create_vpc_endpoint && var.subnet_ids_count > 0 ? var.subnet_ids_count : 0
-
-  vpc_endpoint_id = element(concat(aws_vpc_endpoint.this.*.id, [""]), 0)
-  subnet_id       = element(concat(var.subnet_ids, [""]), count.index)
 }
 
 #####

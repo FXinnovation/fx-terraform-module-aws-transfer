@@ -85,9 +85,8 @@ module "vpc_with_policy" {
 
   endpoint_type = "VPC_ENDPOINT"
 
-  subnet_ids       = module.vpc.public_subnets
-  subnet_ids_count = 2
-  vpc_id           = module.vpc.vpc_id
+  subnet_ids = module.vpc.public_subnets
+  vpc_id     = module.vpc.vpc_id
 
   iam_cloud_watch_iam_role_create = true
   iam_cloud_watch_iam_policy_name = "cloudwatch-transfer"

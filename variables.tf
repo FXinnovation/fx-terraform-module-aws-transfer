@@ -95,12 +95,6 @@ variable "subnet_ids" {
   default     = []
 }
 
-variable "subnet_ids_count" {
-  description = "Number of subnet IDs"
-  type        = number
-  default     = 0
-}
-
 variable "vpc_id" {
   description = "The VPC ID of the virtual private cloud in which the SFTP server's endpoint will be hosted."
   type        = string

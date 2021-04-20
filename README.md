@@ -8,13 +8,13 @@ This module create AWS Transfer
 | Name | Version |
 |------|---------|
 | terraform | >= 0.14.0 |
-| aws | >= 2.0 |
+| aws | >= 3.29.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| aws | >= 2.0 |
+| aws | >= 3.29.0 |
 
 ## Modules
 
@@ -37,7 +37,6 @@ This module create AWS Transfer
 | [aws_security_group_rule](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) |
 | [aws_transfer_server](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/transfer_server) |
 | [aws_vpc_endpoint](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/vpc_endpoint) |
-| [aws_vpc_endpoint_subnet_association](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/vpc_endpoint_subnet_association) |
 
 ## Inputs
 
@@ -66,7 +65,6 @@ This module create AWS Transfer
 | security\_group\_name | Name of the security group | `string` | `null` | no |
 | security\_group\_tags | Tags to be merged with security group | `map(string)` | `{}` | no |
 | subnet\_ids | A list of subnet IDs that are required to host your SFTP server endpoint in your VPC. | `list(string)` | `[]` | no |
-| subnet\_ids\_count | Number of subnet IDs | `number` | `0` | no |
 | tags | Tags to be merged with all resources of this module | `map` | `{}` | no |
 | transfer\_server\_tags | Tags to be merged with the transfer server resource | `map` | `{}` | no |
 | url | URL of the service endpoint used to authenticate users with an identity\_provider\_type of API\_GATEWAY | `string` | `null` | no |
