@@ -48,7 +48,7 @@ No Modules.
 | cloud\_watch\_iam\_role\_arn | Amazon Resource Name (ARN) of an IAM role that allows the service to write your SFTP users’ activity to your Amazon CloudWatch logs for monitoring and auditing purposes | `string` | `null` | no |
 | create\_security\_group | Create a security group to be added to the VPC endpoint | `bool` | `false` | no |
 | create\_vpc\_endpoint | Enable VPC transfer enpoint creation | `bool` | `false` | no |
-| endpoint\_type | he type of endpoint that you want your SFTP server connect to. If you connect to a VPC (or VPC\_ENDPOINT), your SFTP server isn't accessible over the public internet. If you want to connect your SFTP server via public internet, set PUBLIC. Defaults to PUBLIC | `string` | `"PUBLIC"` | no |
+| endpoint\_type | The type of endpoint that you want your SFTP server connect to. If you connect to a VPC (or VPC\_ENDPOINT), your SFTP server isn't accessible over the public internet. If you want to connect your SFTP server via public internet, set PUBLIC. Defaults to PUBLIC | `string` | `"PUBLIC"` | no |
 | host\_key | RSA private key | `string` | `null` | no |
 | iam\_cloud\_watch\_iam\_policy\_name | Name of the cloud watch policy if `iam_cloud_watch_iam_role_create` is set | `string` | `""` | no |
 | iam\_cloud\_watch\_iam\_policy\_name\_prefix | Prefix name of the cloud watch policy if `iam_cloud_watch_iam_role_create` is set | `string` | `""` | no |
