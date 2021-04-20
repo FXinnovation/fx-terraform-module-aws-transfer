@@ -18,7 +18,9 @@ This module create AWS Transfer
 
 ## Modules
 
-No Modules.
+| Name | Source | Version |
+|------|--------|---------|
+| user | ./modules/user |  |
 
 ## Resources
 
@@ -68,6 +70,8 @@ No Modules.
 | tags | Tags to be merged with all resources of this module | `map` | `{}` | no |
 | transfer\_server\_tags | Tags to be merged with the transfer server resource | `map` | `{}` | no |
 | url | URL of the service endpoint used to authenticate users with an identity\_provider\_type of API\_GATEWAY | `string` | `null` | no |
+| user\_tags | Tags to be merge with all transfer users | `map(string)` | `{}` | no |
+| users | A list of object that represent a user:<br> * username (mandatory): The username<br> * public\_ssh\_key (mandatory): The public ssh key to associate with the user<br> * s3\_bucket\_name (mandatory): The S3 bucket to associate with the user<br> * home\_directory (optional): The S3 home directory. Default to /<br> * user\_policy\_json (optional): An IAM JSON policy document that scopes down user access to portions of their Amazon S3 bucket.<br> * server\_role\_arn (mandatory): The ARN of an IAM role that allows the service to controls your user’s access to your Amazon S3 bucket.<br> * tags (optional): Tags to be merge to the user<br> * home\_directory\_mappings (optional): Map of logical directory mappings that specify what S3 paths and keys should be visible to your user and how you want to make them visible.<br>    This map must have the following keys:<br>      * entry: Represents an entry and a target.<br>      * target: Represents the map target. | <pre>list(object({<br>    username         = string<br>    public_ssh_key   = string<br>    s3_bucket_name   = string<br>    home_directory   = optional(string)<br>    user_policy_json = optional(string)<br>    server_role_arn  = string<br>    tags             = optional(map(string))<br>    home_directory_mappings = optional(list(object({<br>      entry  = string<br>      target = string<br>    })))<br>  }))</pre> | `[]` | no |
 | vpc\_endpoint\_id | The ID of the VPC endpoint. This property can only be used when endpoint\_type is set to VPC\_ENDPOINT | `string` | `null` | no |
 | vpc\_endpoint\_name | Name of the VPC transfer endpoint | `string` | `null` | no |
 | vpc\_endpoint\_private\_dns\_enabled | Enable private DNS on VPC transfer endpoint | `bool` | `false` | no |
@@ -89,6 +93,7 @@ No Modules.
 | id | n/a |
 | security\_group\_arn | n/a |
 | security\_group\_id | n/a |
+| user\_arns | n/a |
 | vpc\_endpoint\_arn | n/a |
 | vpc\_endpoint\_dns\_entry | n/a |
 | vpc\_endpoint\_id | n/a |

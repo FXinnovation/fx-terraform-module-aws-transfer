@@ -65,3 +65,11 @@ output "security_group_arn" {
 output "security_group_id" {
   value = element(concat(aws_security_group.this.*.id, [""]), 0)
 }
+
+#####
+# Users
+#####
+
+output "user_arns" {
+  value = module.user
+}
