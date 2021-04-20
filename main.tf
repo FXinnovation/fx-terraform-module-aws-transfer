@@ -198,29 +198,29 @@ resource "aws_iam_role_policy_attachment" "cloud_watch" {
 # Users
 #####
 
-module "user" {
-  source = "./modules/user"
-
-  for_each = toset(keys({ for i, r in var.users : i => r }))
-
-  transfer_server_id = aws_transfer_server.this.id
-
-  username       = var.users[each.value].username
-  public_ssh_key = var.users[each.value].public_ssh_key
-
-  s3_bucket_name      = var.users[each.value].s3_bucket_name
-  home_directory      = var.users[each.value].home_directory
-  home_directory_type = var.users[each.value].home_directory != null ? "PATH" : "LOGICAL"
-
-  user_policy_json = var.users[each.value].user_policy_json
-  server_role_arn  = var.users[each.value].server_role_arn
-
-  home_directory_mappings = var.users[each.value].home_directory_mappings == null ? [] : var.users[each.value].home_directory_mappings
-
-  tags = merge(
-    var.tags,
-    var.user_tags,
-    var.users[each.value].tags,
-    local.tags,
-  )
-}
+#module "user" {
+#  source = "./modules/user"
+#
+#  for_each = toset(keys({ for i, r in var.users : i => r }))
+#
+#  transfer_server_id = aws_transfer_server.this.id
+#
+#  username       = var.users[each.value].username
+#  public_ssh_key = var.users[each.value].public_ssh_key
+#
+#  s3_bucket_name      = var.users[each.value].s3_bucket_name
+#  home_directory      = var.users[each.value].home_directory
+#  home_directory_type = var.users[each.value].home_directory != null ? "PATH" : "LOGICAL"
+#
+#  user_policy_json = var.users[each.value].user_policy_json
+#  server_role_arn  = var.users[each.value].server_role_arn
+#
+#  home_directory_mappings = var.users[each.value].home_directory_mappings == null ? [] : var.users[each.value].home_directory_mappings
+#
+#  tags = merge(
+#    var.tags,
+#    var.user_tags,
+#    var.users[each.value].tags,
+#    local.tags,
+#  )
+#}

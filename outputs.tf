@@ -70,6 +70,6 @@ output "security_group_id" {
 # Users
 #####
 
-output "user_arns" {
-  value = module.user
-}
+#output "user_arns" {
+#  value = module.user
+#}
