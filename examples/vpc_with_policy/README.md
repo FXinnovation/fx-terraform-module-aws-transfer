@@ -1,4 +1,6 @@
-# Default example
+# VPC private endpoint example
+
+With IAM role create and VPC Endpoint creation
 
 ## Usage
 
@@ -27,8 +29,8 @@
 
 | Name | Source | Version |
 |------|--------|---------|
-| default | ../.. |  |
 | vpc | terraform-aws-modules/vpc/aws | 2.78.0 |
+| vpc_with_policy | ../.. |  |
 
 ## Resources
 
@@ -46,5 +48,7 @@
 
 ## Outputs
 
-No output.
+| Name | Description |
+|------|-------------|
+| vpc\_with\_policy | n/a |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
