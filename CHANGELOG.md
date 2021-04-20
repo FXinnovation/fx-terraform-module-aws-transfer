@@ -1,3 +1,8 @@
+## 1.1.0
+
+* feat: Add user management for AWS transfer
+* fix: issue with vpc endpoint output that need to be refresh twice after apply to be outputs
+
 ## 1.0.0
 
 * feat: first stable version
