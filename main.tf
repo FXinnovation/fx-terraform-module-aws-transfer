@@ -50,6 +50,7 @@ resource "aws_vpc_endpoint" "this" {
   service_name = format("com.amazonaws.%s.transfer.server", data.aws_region.this.name)
 
   vpc_id              = var.vpc_id
+  subnet_ids          = var.subnet_ids
   vpc_endpoint_type   = "Interface"
   private_dns_enabled = var.vpc_endpoint_private_dns_enabled
   security_group_ids  = compact(concat(aws_security_group.this.*.id, var.vpc_endpoint_security_groups))
@@ -62,13 +63,6 @@ resource "aws_vpc_endpoint" "this" {
       Name = format("%s%s", var.prefix, var.vpc_endpoint_name)
     }
   )
-}
-
-resource "aws_vpc_endpoint_subnet_association" "this" {
-  count = local.should_create_vpc_endpoint && var.subnet_ids_count > 0 ? var.subnet_ids_count : 0
-
-  vpc_endpoint_id = element(concat(aws_vpc_endpoint.this.*.id, [""]), 0)
-  subnet_id       = element(concat(var.subnet_ids, [""]), count.index)
 }
 
 #####
@@ -192,4 +186,35 @@ resource "aws_iam_role_policy_attachment" "cloud_watch" {
 
   role       = aws_iam_role.cloud_watch.0.name
   policy_arn = aws_iam_policy.cloud_watch.0.arn
+}
+
+#####
+# Users
+#####
+
+module "user" {
+  source = "./modules/user"
+
+  for_each = toset(keys({ for i, r in var.users : i => r }))
+
+  transfer_server_id = aws_transfer_server.this.id
+
+  username       = var.users[each.value].username
+  public_ssh_key = var.users[each.value].public_ssh_key
+
+  s3_bucket_name      = var.users[each.value].s3_bucket_name
+  home_directory      = var.users[each.value].home_directory
+  home_directory_type = var.users[each.value].home_directory != null ? "PATH" : "LOGICAL"
+
+  user_policy_json = var.users[each.value].user_policy_json
+  server_role_arn  = var.users[each.value].server_role_arn
+
+  home_directory_mappings = var.users[each.value].home_directory_mappings == null ? [] : var.users[each.value].home_directory_mappings
+
+  tags = merge(
+    var.tags,
+    var.user_tags,
+    var.users[each.value].tags,
+    local.tags,
+  )
 }

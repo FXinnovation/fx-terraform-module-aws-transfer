@@ -28,6 +28,7 @@
 | Name | Source | Version |
 |------|--------|---------|
 | default | ../.. |  |
+| s3 | git::https://scm.dazzlingwrench.fxinnovation.com/fxinnovation-public/terraform-module-aws-bucket-s3.git?ref=2.1.0 |  |
 | vpc | terraform-aws-modules/vpc/aws | 2.78.0 |
 
 ## Resources
@@ -35,6 +36,9 @@
 | Name |
 |------|
 | [aws_availability_zones](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/availability_zones) |
+| [aws_iam_policy_document](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) |
+| [aws_iam_role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) |
+| [aws_iam_role_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) |
 | [random_string](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/string) |
 
 ## Inputs

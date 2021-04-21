@@ -95,12 +95,6 @@ variable "subnet_ids" {
   default     = []
 }
 
-variable "subnet_ids_count" {
-  description = "Number of subnet IDs"
-  type        = number
-  default     = 0
-}
-
 variable "vpc_id" {
   description = "The VPC ID of the virtual private cloud in which the SFTP server's endpoint will be hosted."
   type        = string
@@ -199,4 +193,44 @@ variable "vpc_endpoint_name" {
   description = "Name of the VPC transfer endpoint"
   type        = string
   default     = null
+}
+
+#####
+# Users
+#####
+variable "users" {
+  description = <<-DOCUMENTATION
+A list of object that represent a user:
+ * username (mandatory): The username
+ * public_ssh_key (mandatory): The public ssh key to associate with the user
+ * s3_bucket_name (mandatory): The S3 bucket to associate with the user
+ * home_directory (optional): The S3 home directory. Default to /
+ * user_policy_json (optional): An IAM JSON policy document that scopes down user access to portions of their Amazon S3 bucket.
+ * server_role_arn (mandatory): The ARN of an IAM role that allows the service to controls your user’s access to your Amazon S3 bucket.
+ * tags (optional): Tags to be merge to the user
+ * home_directory_mappings (optional): Map of logical directory mappings that specify what S3 paths and keys should be visible to your user and how you want to make them visible.
+    This map must have the following keys:
+      * entry: Represents an entry and a target.
+      * target: Represents the map target.
+DOCUMENTATION
+  type = list(object({
+    username         = string
+    public_ssh_key   = string
+    s3_bucket_name   = string
+    home_directory   = optional(string)
+    user_policy_json = optional(string)
+    server_role_arn  = string
+    tags             = optional(map(string))
+    home_directory_mappings = optional(list(object({
+      entry  = string
+      target = string
+    })))
+  }))
+  default = []
+}
+
+variable "user_tags" {
+  description = "Tags to be merge with all transfer users"
+  type        = map(string)
+  default     = {}
 }
