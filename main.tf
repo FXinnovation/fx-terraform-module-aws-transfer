@@ -45,9 +45,11 @@ locals {
 }
 
 resource "aws_vpc_endpoint" "this" {
+  provider = aws.vpc
+
   count = local.should_create_vpc_endpoint ? 1 : 0
 
-  service_name = format("com.amazonaws.%s.transfer.server", data.aws_region.this.name)
+  service_name = format("com.amazonaws.%s.transfer.server", data.aws_region.vpc.name)
 
   vpc_id              = var.vpc_id
   subnet_ids          = var.subnet_ids
@@ -74,6 +76,8 @@ locals {
 }
 
 resource "aws_security_group" "this" {
+  provider = aws.vpc
+
   count = local.security_group_needed ? 1 : 0
 
   name        = format("%s%s", var.prefix, var.security_group_name)
@@ -90,6 +94,8 @@ resource "aws_security_group" "this" {
 }
 
 resource "aws_security_group_rule" "this_in_cidr" {
+  provider = aws.vpc
+
   count = local.security_group_needed && length(var.allowed_cidrs) > 0 ? 1 : 0
 
   type              = "ingress"
@@ -101,6 +107,8 @@ resource "aws_security_group_rule" "this_in_cidr" {
 }
 
 resource "aws_security_group_rule" "this_in_sg" {
+  provider = aws.vpc
+
   count = local.security_group_needed && var.allowed_security_group_ids_count > 0 ? var.allowed_security_group_ids_count : 0
 
   type                     = "ingress"
@@ -112,6 +120,8 @@ resource "aws_security_group_rule" "this_in_sg" {
 }
 
 resource "aws_security_group_rule" "this_out_cidr" {
+  provider = aws.vpc
+
   count = local.security_group_needed && length(var.allowed_cidrs) > 0 ? 1 : 0
 
   type              = "egress"
@@ -123,6 +133,8 @@ resource "aws_security_group_rule" "this_out_cidr" {
 }
 
 resource "aws_security_group_rule" "this_out_sg" {
+  provider = aws.vpc
+
   count = local.security_group_needed && var.allowed_security_group_ids_count > 0 ? var.allowed_security_group_ids_count : 0
 
   type                     = "egress"
