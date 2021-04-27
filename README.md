@@ -15,6 +15,7 @@ This module create AWS Transfer
 | Name | Version |
 |------|---------|
 | aws | >= 3.29.0 |
+| aws.vpc | >= 3.29.0 |
 
 ## Modules
 

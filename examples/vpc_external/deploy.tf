@@ -68,6 +68,10 @@ resource "aws_security_group" "example" {
 module "vpc_external_vpce" {
   source = "../.."
 
+  providers = {
+    aws.vpc = "aws"
+  }
+
   prefix = "aws-transfer-tftest${random_string.this.result}"
 
   endpoint_type = "VPC_ENDPOINT"

@@ -1,3 +1,7 @@
+## 1.2.0
+
+* feat: aws.vpc provider to support vpc endpoint creation with vpc peering subnets
+
 ## 1.1.0
 
 * feat: Add user management for AWS transfer

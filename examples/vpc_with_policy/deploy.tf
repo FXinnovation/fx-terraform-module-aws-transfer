@@ -81,6 +81,10 @@ resource "aws_iam_role_policy_attachment" "test-attach" {
 module "vpc_with_policy" {
   source = "../.."
 
+  providers = {
+    aws.vpc = aws
+  }
+
   prefix = "aws-transfer-tftest${random_string.this.result}"
 
   endpoint_type = "VPC_ENDPOINT"
