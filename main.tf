@@ -22,12 +22,20 @@ resource "aws_transfer_server" "this" {
   force_destroy          = true
 
   dynamic "endpoint_details" {
-    for_each = var.endpoint_type == "VPC_ENDPOINT" ? [1] : []
+    for_each = var.endpoint_type == "VPC_ENDPOINT" || var.endpoint_type == "VPC" ? [1] : []
 
     content {
-      vpc_endpoint_id = local.should_create_vpc_endpoint ? element(concat(aws_vpc_endpoint.this.*.id, [""]), 0) : var.endpoint_type == "VPC_ENDPOINT" ? var.vpc_endpoint_id : null
+      vpc_endpoint_id        = var.endpoint_type == "VPC_ENDPOINT" ? var.vpc_endpoint_id : null
+      address_allocation_ids = var.endpoint_type == "VPC" && length(var.vpc_address_allocation_ids) > 0 ? var.vpc_address_allocation_ids : null
+      security_group_ids     = var.endpoint_type == "VPC" ? compact(concat(aws_security_group.this.*.id, var.vpc_endpoint_security_groups)) : null
+      subnet_ids             = var.endpoint_type == "VPC" ? var.subnet_ids : null
+      vpc_id                 = var.endpoint_type == "VPC" ? var.vpc_id : null
     }
   }
+
+  protocols = var.protocols
+
+  certificate = contains(var.protocols, "FTPS") ? var.acm_certificate_arn : null
 
   tags = merge(
     var.tags,
@@ -37,47 +45,14 @@ resource "aws_transfer_server" "this" {
 }
 
 #####
-# VPC endpoint
-#####
-
-locals {
-  should_create_vpc_endpoint = var.endpoint_type == "VPC_ENDPOINT" && var.create_vpc_endpoint
-}
-
-resource "aws_vpc_endpoint" "this" {
-  provider = aws.vpc
-
-  count = local.should_create_vpc_endpoint ? 1 : 0
-
-  service_name = format("com.amazonaws.%s.transfer.server", data.aws_region.vpc.name)
-
-  vpc_id              = var.vpc_id
-  subnet_ids          = var.subnet_ids
-  vpc_endpoint_type   = "Interface"
-  private_dns_enabled = var.vpc_endpoint_private_dns_enabled
-  security_group_ids  = compact(concat(aws_security_group.this.*.id, var.vpc_endpoint_security_groups))
-
-  tags = merge(
-    var.tags,
-    var.vpc_endpoint_tags,
-    local.tags,
-    {
-      Name = format("%s%s", var.prefix, var.vpc_endpoint_name)
-    }
-  )
-}
-
-#####
 # Security group
 #####
 
 locals {
-  security_group_needed = (length(var.allowed_cidrs) > 0 || length(var.allowed_security_group_ids) > 0) && var.endpoint_type == "VPC_ENDPOINT" && var.create_security_group
+  security_group_needed = (length(var.allowed_cidrs) > 0 || length(var.allowed_security_group_ids) > 0) && var.endpoint_type == "VPC" && var.create_security_group
 }
 
 resource "aws_security_group" "this" {
-  provider = aws.vpc
-
   count = local.security_group_needed ? 1 : 0
 
   name        = format("%s%s", var.prefix, var.security_group_name)
@@ -94,8 +69,6 @@ resource "aws_security_group" "this" {
 }
 
 resource "aws_security_group_rule" "this_in_cidr" {
-  provider = aws.vpc
-
   count = local.security_group_needed && length(var.allowed_cidrs) > 0 ? 1 : 0
 
   type              = "ingress"
@@ -107,8 +80,6 @@ resource "aws_security_group_rule" "this_in_cidr" {
 }
 
 resource "aws_security_group_rule" "this_in_sg" {
-  provider = aws.vpc
-
   count = local.security_group_needed && var.allowed_security_group_ids_count > 0 ? var.allowed_security_group_ids_count : 0
 
   type                     = "ingress"
@@ -120,8 +91,6 @@ resource "aws_security_group_rule" "this_in_sg" {
 }
 
 resource "aws_security_group_rule" "this_out_cidr" {
-  provider = aws.vpc
-
   count = local.security_group_needed && length(var.allowed_cidrs) > 0 ? 1 : 0
 
   type              = "egress"
@@ -133,8 +102,6 @@ resource "aws_security_group_rule" "this_out_cidr" {
 }
 
 resource "aws_security_group_rule" "this_out_sg" {
-  provider = aws.vpc
-
   count = local.security_group_needed && var.allowed_security_group_ids_count > 0 ? var.allowed_security_group_ids_count : 0
 
   type                     = "egress"

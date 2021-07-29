@@ -118,10 +118,22 @@ variable "vpc_endpoint_id" {
   default     = null
 }
 
-variable "address_allocation_ids" {
+variable "vpc_address_allocation_ids" {
   description = "A list of address allocation IDs that are required to attach an Elastic IP address to your SFTP server's endpoint."
   type        = list(string)
   default     = []
+}
+
+variable "protocols" {
+  description = "Specifies the file transfer protocol or protocols over which your file transfer protocol client can connect to your server's endpoint"
+  type        = list(string)
+  default     = ["SFTP"]
+}
+
+variable "acm_certificate_arn" {
+  description = "The Amazon Resource Name (ARN) of the AWS Certificate Manager (ACM) certificate. This is required when protocols is set to FTPS"
+  type        = string
+  default     = null
 }
 
 #####
@@ -163,36 +175,10 @@ variable "security_group_tags" {
   default     = {}
 }
 
-#####
-# VPC endpoint
-#####
-
-variable "create_vpc_endpoint" {
-  description = "Enable VPC transfer enpoint creation"
-  default     = false
-}
-
-variable "vpc_endpoint_private_dns_enabled" {
-  description = "Enable private DNS on VPC transfer endpoint"
-  default     = false
-}
-
 variable "vpc_endpoint_security_groups" {
   description = "List of security group IDs to be added to VPC transfer endpoint"
   type        = list(string)
   default     = []
-}
-
-variable "vpc_endpoint_tags" {
-  description = "Tags to be merge with VPC transfer endpoint"
-  type        = map(string)
-  default     = {}
-}
-
-variable "vpc_endpoint_name" {
-  description = "Name of the VPC transfer endpoint"
-  type        = string
-  default     = null
 }
 
 #####

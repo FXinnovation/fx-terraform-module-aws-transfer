@@ -81,13 +81,9 @@ resource "aws_iam_role_policy_attachment" "test-attach" {
 module "vpc_with_policy" {
   source = "../.."
 
-  providers = {
-    aws.vpc = aws
-  }
-
   prefix = "aws-transfer-tftest${random_string.this.result}"
 
-  endpoint_type = "VPC_ENDPOINT"
+  endpoint_type = "VPC"
 
   subnet_ids = module.vpc.public_subnets
   vpc_id     = module.vpc.vpc_id
@@ -99,9 +95,6 @@ module "vpc_with_policy" {
   create_security_group = true
   security_group_name   = "aws_transfer"
   allowed_cidrs         = ["0.0.0.0/0"]
-
-  create_vpc_endpoint = true
-  vpc_endpoint_name   = "transfer"
 
   users = [
     {
