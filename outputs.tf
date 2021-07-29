@@ -39,23 +39,7 @@ output "iam_cloud_watch_iam_policy_name" {
 }
 
 #####
-# Security group
-#####
-
-output "vpc_endpoint_id" {
-  value = element(concat(aws_vpc_endpoint.this.*.id, [""]), 0)
-}
-
-output "vpc_endpoint_arn" {
-  value = element(concat(aws_vpc_endpoint.this.*.arn, [""]), 0)
-}
-
-output "vpc_endpoint_dns_entry" {
-  value = element(concat(aws_vpc_endpoint.this.*.dns_entry, [""]), 0)
-}
-
-#####
-# VPC endpoint
+# VPC security group
 #####
 
 output "security_group_arn" {

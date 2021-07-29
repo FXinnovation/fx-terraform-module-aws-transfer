@@ -81,10 +81,6 @@ resource "aws_iam_role_policy_attachment" "test-attach" {
 module "default" {
   source = "../.."
 
-  providers = {
-    aws.vpc = "aws"
-  }
-
   prefix = "aws-transfer-tftest${random_string.this.result}"
 
   users = [
