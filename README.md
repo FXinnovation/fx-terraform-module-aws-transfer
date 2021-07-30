@@ -36,6 +36,7 @@ This module create AWS Transfer
 | [aws_security_group](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group) |
 | [aws_security_group_rule](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) |
 | [aws_transfer_server](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/transfer_server) |
+| [aws_vpc_endpoint](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/vpc_endpoint) |
 
 ## Inputs
 
@@ -89,6 +90,8 @@ This module create AWS Transfer
 | security\_group\_arn | n/a |
 | security\_group\_id | n/a |
 | user\_arns | n/a |
+| vpc\_endpoint\_dns\_name | n/a |
+| vpc\_endpoint\_route53\_hosted\_zone\_id | n/a |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## Versioning

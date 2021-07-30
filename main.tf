@@ -7,7 +7,6 @@ locals {
   should_create_instance_profile = var.iam_cloud_watch_iam_role_create || var.iam_s3_bucket_role_create
 }
 
-
 #####
 # Transfer
 #####

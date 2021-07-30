@@ -18,6 +18,14 @@ output "host_key_fingerprint" {
   value = aws_transfer_server.this.host_key_fingerprint
 }
 
+output "vpc_endpoint_dns_name" {
+  value = element(concat(data.aws_vpc_endpoint.this.*.dns_entry.0.dns_name, [""]), 0)
+}
+
+output "vpc_endpoint_route53_hosted_zone_id" {
+  value = element(concat(data.aws_vpc_endpoint.this.*.dns_entry.0.hosted_zone_id, [""]), 0)
+}
+
 #####
 # IAM
 #####
