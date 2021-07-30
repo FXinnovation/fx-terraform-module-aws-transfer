@@ -99,14 +99,17 @@ module "vpc_with_policy" {
   users = [
     {
       username        = local.random_name,
-      public_ssh_key  = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC1uw5dMleanmYoVG81TC/mGhCcoe5/aZXCXElUEoeHAZvvEN9sP8ffFs/joc9VJbFWWz+7F/XqaI2V6+lmjETt6iuDUkyLBd8gZnRPkdMxFPphbXKN+1bf7WR4SGLTWdJ3O5zTP6C//L5NjCxiu8ZIbjoSp9EB+R3BX4i8Y/411+ant2ujUQxfZ8pMXM4CuQIzlEgco2fhFsG8ZpqHkoKp/yCqDIl4U+JlySAkdtRn/bP8Kp3ebxMxxqgpSI+yJ3TkWbCL/biLDqhXX/QyTR+t0RbchUVf+oQknT1OrARVIO8iejyUY6Bne7u1H3T4WOhJKJsrMk2oSeV7u/SC/Y12SIxiUD10M2ox3NNpcDe34/B9EX+LFsxbTJudUlq/Q/AW2pKtkmo6OxF4cjQeoYPYKMUq07dMRU5fWUlBVWUynt9fIPqmV/NGzJcYl9ugYfoJhYUAYKYmfQZ096AcZPuWN0sdKzsLOFp1v2Opz4t9A4gX8b5YIBXdTW2pMdI39SE= demo@tftest",
+      public_ssh_keys = ["ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC1uw5dMleanmYoVG81TC/mGhCcoe5/aZXCXElUEoeHAZvvEN9sP8ffFs/joc9VJbFWWz+7F/XqaI2V6+lmjETt6iuDUkyLBd8gZnRPkdMxFPphbXKN+1bf7WR4SGLTWdJ3O5zTP6C//L5NjCxiu8ZIbjoSp9EB+R3BX4i8Y/411+ant2ujUQxfZ8pMXM4CuQIzlEgco2fhFsG8ZpqHkoKp/yCqDIl4U+JlySAkdtRn/bP8Kp3ebxMxxqgpSI+yJ3TkWbCL/biLDqhXX/QyTR+t0RbchUVf+oQknT1OrARVIO8iejyUY6Bne7u1H3T4WOhJKJsrMk2oSeV7u/SC/Y12SIxiUD10M2ox3NNpcDe34/B9EX+LFsxbTJudUlq/Q/AW2pKtkmo6OxF4cjQeoYPYKMUq07dMRU5fWUlBVWUynt9fIPqmV/NGzJcYl9ugYfoJhYUAYKYmfQZ096AcZPuWN0sdKzsLOFp1v2Opz4t9A4gX8b5YIBXdTW2pMdI39SE= demo@tftest"],
       home_directory  = "/foo"
       s3_bucket_name  = module.s3.id,
       server_role_arn = aws_iam_role.s3.arn,
     },
     {
-      username       = format("%s-2", local.random_name),
-      public_ssh_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC1uw5dMleanmYoVG81TC/mGhCcoe5/aZXCXElUEoeHAZvvEN9sP8ffFs/joc9VJbFWWz+7F/XqaI2V6+lmjETt6iuDUkyLBd8gZnRPkdMxFPphbXKN+1bf7WR4SGLTWdJ3O5zTP6C//L5NjCxiu8ZIbjoSp9EB+R3BX4i8Y/411+ant2ujUQxfZ8pMXM4CuQIzlEgco2fhFsG8ZpqHkoKp/yCqDIl4U+JlySAkdtRn/bP8Kp3ebxMxxqgpSI+yJ3TkWbCL/biLDqhXX/QyTR+t0RbchUVf+oQknT1OrARVIO8iejyUY6Bne7u1H3T4WOhJKJsrMk2oSeV7u/SC/Y12SIxiUD10M2ox3NNpcDe34/B9EX+LFsxbTJudUlq/Q/AW2pKtkmo6OxF4cjQeoYPYKMUq07dMRU5fWUlBVWUynt9fIPqmV/NGzJcYl9ugYfoJhYUAYKYmfQZ096AcZPuWN0sdKzsLOFp1v2Opz4t9A4gX8b5YIBXdTW2pMdI39SE= demo@tftest",
+      username = format("%s-2", local.random_name),
+      public_ssh_keys = [
+        "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC1uw5dMleanmYoVG81TC/mGhCcoe5/aZXCXElUEoeHAZvvEN9sP8ffFs/joc9VJbFWWz+7F/XqaI2V6+lmjETt6iuDUkyLBd8gZnRPkdMxFPphbXKN+1bf7WR4SGLTWdJ3O5zTP6C//L5NjCxiu8ZIbjoSp9EB+R3BX4i8Y/411+ant2ujUQxfZ8pMXM4CuQIzlEgco2fhFsG8ZpqHkoKp/yCqDIl4U+JlySAkdtRn/bP8Kp3ebxMxxqgpSI+yJ3TkWbCL/biLDqhXX/QyTR+t0RbchUVf+oQknT1OrARVIO8iejyUY6Bne7u1H3T4WOhJKJsrMk2oSeV7u/SC/Y12SIxiUD10M2ox3NNpcDe34/B9EX+LFsxbTJudUlq/Q/AW2pKtkmo6OxF4cjQeoYPYKMUq07dMRU5fWUlBVWUynt9fIPqmV/NGzJcYl9ugYfoJhYUAYKYmfQZ096AcZPuWN0sdKzsLOFp1v2Opz4t9A4gX8b5YIBXdTW2pMdI39SE= demo@tftest",
+        "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCsuIWQh6D22QYg2ofV9uMo2QeYytRPigK2gQdj0dWoXvppyhOjDFcgLhgejQxjrq9KumKrsbXwqM7wnlVYiROoKs4+BtGiBRTbTCZPPCpyQjSiFmigo7nsUMX3JntzqyD6892Nm2L2IinkqxvWVX1NkJVZMNd3mqSlY61th4T+wPTGvDY0A24dQ3DOFq2+37r8cxHzS3oJktzy3Aeteu3jI2zfUewLBwRehZoyte34FaiKghhC9B9jW4VilSJqRfSda+RjPV/LgA4W3FbWiiDNc1nGJWhM7fCwuDd6LKf1n6VuW3l4HxRxTUCoQWaajgKLjV3Y9tOEOOvu8gb4+NMOAiZTdYxxuWIKgUM4sMRdCiv1niDWZnFT8Qo47CgfunOnbu9Dk/TagZKKvDCOBDm3KYki65I+ZZQDb3qBInF8DEn+TzwgM2REXIbOxlMm1bdGhLFoLngy+rlF6iIFgnHNfFIZKNod6VJ6gLxvUHU/g4iJclsnceaNrMq9r9WEmf8= demo2@tftest",
+      ]
       s3_bucket_name = module.s3.id,
       home_directory_mappings = [{
         entry  = "/foo.pdf",

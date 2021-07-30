@@ -188,7 +188,7 @@ variable "users" {
   description = <<-DOCUMENTATION
 A list of object that represent a user:
  * username (mandatory): The username
- * public_ssh_key (mandatory): The public ssh key to associate with the user
+ * public_ssh_keys (mandatory): List of public ssh keys to associate with the user
  * s3_bucket_name (mandatory): The S3 bucket to associate with the user
  * home_directory (optional): The S3 home directory. Default to /
  * user_policy_json (optional): An IAM JSON policy document that scopes down user access to portions of their Amazon S3 bucket.
@@ -201,7 +201,7 @@ A list of object that represent a user:
 DOCUMENTATION
   type = list(object({
     username         = string
-    public_ssh_key   = string
+    public_ssh_keys  = list(string)
     s3_bucket_name   = string
     home_directory   = optional(string)
     user_policy_json = optional(string)

@@ -177,8 +177,8 @@ module "user" {
 
   transfer_server_id = aws_transfer_server.this.id
 
-  username       = var.users[each.value].username
-  public_ssh_key = var.users[each.value].public_ssh_key
+  username        = var.users[each.value].username
+  public_ssh_keys = var.users[each.value].public_ssh_keys
 
   s3_bucket_name      = var.users[each.value].s3_bucket_name
   home_directory      = var.users[each.value].home_directory
