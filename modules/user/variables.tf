@@ -8,9 +8,9 @@ variable "username" {
   type        = string
 }
 
-variable "public_ssh_key" {
-  description = "The public key portion of an SSH key pair."
-  type        = string
+variable "public_ssh_keys" {
+  description = "List of public keys portion of an SSH key pair."
+  type        = list(string)
 }
 
 variable "s3_bucket_name" {

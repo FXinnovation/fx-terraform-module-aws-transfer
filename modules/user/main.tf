@@ -18,7 +18,9 @@ resource "aws_transfer_user" "this" {
 }
 
 resource "aws_transfer_ssh_key" "this" {
+  count = length(var.public_ssh_keys)
+
   server_id = var.transfer_server_id
   user_name = aws_transfer_user.this.user_name
-  body      = var.public_ssh_key
+  body      = var.public_ssh_keys[count.index]
 }

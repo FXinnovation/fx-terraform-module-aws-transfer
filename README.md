@@ -36,6 +36,7 @@ This module create AWS Transfer
 | [aws_security_group](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group) |
 | [aws_security_group_rule](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) |
 | [aws_transfer_server](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/transfer_server) |
+| [aws_vpc_endpoint](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/vpc_endpoint) |
 
 ## Inputs
 
@@ -68,7 +69,7 @@ This module create AWS Transfer
 | transfer\_server\_tags | Tags to be merged with the transfer server resource | `map` | `{}` | no |
 | url | URL of the service endpoint used to authenticate users with an identity\_provider\_type of API\_GATEWAY | `string` | `null` | no |
 | user\_tags | Tags to be merge with all transfer users | `map(string)` | `{}` | no |
-| users | A list of object that represent a user:<br> * username (mandatory): The username<br> * public\_ssh\_key (mandatory): The public ssh key to associate with the user<br> * s3\_bucket\_name (mandatory): The S3 bucket to associate with the user<br> * home\_directory (optional): The S3 home directory. Default to /<br> * user\_policy\_json (optional): An IAM JSON policy document that scopes down user access to portions of their Amazon S3 bucket.<br> * server\_role\_arn (mandatory): The ARN of an IAM role that allows the service to controls your user’s access to your Amazon S3 bucket.<br> * tags (optional): Tags to be merge to the user<br> * home\_directory\_mappings (optional): Map of logical directory mappings that specify what S3 paths and keys should be visible to your user and how you want to make them visible.<br>    This map must have the following keys:<br>      * entry: Represents an entry and a target.<br>      * target: Represents the map target. | <pre>list(object({<br>    username         = string<br>    public_ssh_key   = string<br>    s3_bucket_name   = string<br>    home_directory   = optional(string)<br>    user_policy_json = optional(string)<br>    server_role_arn  = string<br>    tags             = optional(map(string))<br>    home_directory_mappings = optional(list(object({<br>      entry  = string<br>      target = string<br>    })))<br>  }))</pre> | `[]` | no |
+| users | A list of object that represent a user:<br> * username (mandatory): The username<br> * public\_ssh\_keys (mandatory): List of public ssh keys to associate with the user<br> * s3\_bucket\_name (mandatory): The S3 bucket to associate with the user<br> * home\_directory (optional): The S3 home directory. Default to /<br> * user\_policy\_json (optional): An IAM JSON policy document that scopes down user access to portions of their Amazon S3 bucket.<br> * server\_role\_arn (mandatory): The ARN of an IAM role that allows the service to controls your user’s access to your Amazon S3 bucket.<br> * tags (optional): Tags to be merge to the user<br> * home\_directory\_mappings (optional): Map of logical directory mappings that specify what S3 paths and keys should be visible to your user and how you want to make them visible.<br>    This map must have the following keys:<br>      * entry: Represents an entry and a target.<br>      * target: Represents the map target. | <pre>list(object({<br>    username         = string<br>    public_ssh_keys  = list(string)<br>    s3_bucket_name   = string<br>    home_directory   = optional(string)<br>    user_policy_json = optional(string)<br>    server_role_arn  = string<br>    tags             = optional(map(string))<br>    home_directory_mappings = optional(list(object({<br>      entry  = string<br>      target = string<br>    })))<br>  }))</pre> | `[]` | no |
 | vpc\_address\_allocation\_ids | A list of address allocation IDs that are required to attach an Elastic IP address to your SFTP server's endpoint. | `list(string)` | `[]` | no |
 | vpc\_endpoint\_id | The ID of the VPC endpoint. This property can only be used when endpoint\_type is set to VPC\_ENDPOINT | `string` | `null` | no |
 | vpc\_endpoint\_security\_groups | List of security group IDs to be added to VPC transfer endpoint | `list(string)` | `[]` | no |
@@ -89,6 +90,8 @@ This module create AWS Transfer
 | security\_group\_arn | n/a |
 | security\_group\_id | n/a |
 | user\_arns | n/a |
+| vpc\_endpoint\_dns\_name | n/a |
+| vpc\_endpoint\_route53\_hosted\_zone\_id | n/a |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## Versioning

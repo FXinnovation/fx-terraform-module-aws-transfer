@@ -86,7 +86,7 @@ module "default" {
   users = [
     {
       username        = local.random_name,
-      public_ssh_key  = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC1uw5dMleanmYoVG81TC/mGhCcoe5/aZXCXElUEoeHAZvvEN9sP8ffFs/joc9VJbFWWz+7F/XqaI2V6+lmjETt6iuDUkyLBd8gZnRPkdMxFPphbXKN+1bf7WR4SGLTWdJ3O5zTP6C//L5NjCxiu8ZIbjoSp9EB+R3BX4i8Y/411+ant2ujUQxfZ8pMXM4CuQIzlEgco2fhFsG8ZpqHkoKp/yCqDIl4U+JlySAkdtRn/bP8Kp3ebxMxxqgpSI+yJ3TkWbCL/biLDqhXX/QyTR+t0RbchUVf+oQknT1OrARVIO8iejyUY6Bne7u1H3T4WOhJKJsrMk2oSeV7u/SC/Y12SIxiUD10M2ox3NNpcDe34/B9EX+LFsxbTJudUlq/Q/AW2pKtkmo6OxF4cjQeoYPYKMUq07dMRU5fWUlBVWUynt9fIPqmV/NGzJcYl9ugYfoJhYUAYKYmfQZ096AcZPuWN0sdKzsLOFp1v2Opz4t9A4gX8b5YIBXdTW2pMdI39SE= demo@tftest",
+      public_ssh_keys = ["ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC1uw5dMleanmYoVG81TC/mGhCcoe5/aZXCXElUEoeHAZvvEN9sP8ffFs/joc9VJbFWWz+7F/XqaI2V6+lmjETt6iuDUkyLBd8gZnRPkdMxFPphbXKN+1bf7WR4SGLTWdJ3O5zTP6C//L5NjCxiu8ZIbjoSp9EB+R3BX4i8Y/411+ant2ujUQxfZ8pMXM4CuQIzlEgco2fhFsG8ZpqHkoKp/yCqDIl4U+JlySAkdtRn/bP8Kp3ebxMxxqgpSI+yJ3TkWbCL/biLDqhXX/QyTR+t0RbchUVf+oQknT1OrARVIO8iejyUY6Bne7u1H3T4WOhJKJsrMk2oSeV7u/SC/Y12SIxiUD10M2ox3NNpcDe34/B9EX+LFsxbTJudUlq/Q/AW2pKtkmo6OxF4cjQeoYPYKMUq07dMRU5fWUlBVWUynt9fIPqmV/NGzJcYl9ugYfoJhYUAYKYmfQZ096AcZPuWN0sdKzsLOFp1v2Opz4t9A4gX8b5YIBXdTW2pMdI39SE= demo@tftest"],
       home_directory  = "/",
       s3_bucket_name  = module.s3.id,
       server_role_arn = aws_iam_role.s3.arn,

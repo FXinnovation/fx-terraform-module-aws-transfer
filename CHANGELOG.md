@@ -1,3 +1,8 @@
+## 3.0.0
+
+* feat (BREAKING): Allow multiple SSH key per user. The attribute `public_ssh_key` of `users` object is now rename to `public_ssh_keys`
+* feat: Add VPC endpoint DNS and route53 zone id outputs for VPC endpoint type.
+
 ## 2.0.0
 
 * maintenance (BREAKING): bump minimal aws provider version to 3.49.0

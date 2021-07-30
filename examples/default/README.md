@@ -50,5 +50,7 @@
 
 ## Outputs
 
-No output.
+| Name | Description |
+|------|-------------|
+| default | n/a |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
