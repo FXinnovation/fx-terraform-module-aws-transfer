@@ -1,3 +1,22 @@
+
+## 4.0.0
+
+* (BREAKING) chore: pins `pre-commit-hooks` to `v4.0.1`.
+* (BREAKING) chore: bumps `s3` module version to last release:
+  - todo: pins version `4.0.0` once new s3 module release is merged.
+* (BREAKING) refactor: use mirror `vpc` module from internal VCS:
+  - pins to version `v3.6.0`.
+* chore: pins `terraform` to `>= 0.14`.
+* chore: pins `aws` provider to `>= 3.5`.
+* chore: pins `pre-commit-terraform` to `v1.50.0`.
+* feat: add `pre-commit-afcmf` (`v0.1.2`).
+* chore: bumps `terraform` + providers versions in examples:
+  - pins `terraform` to `>= 0.14`.
+  - pins `aws` provider to `>= 3.5`.
+  - pins `random` provider to `>= 3.1`.
+* refactor: get rid of useless `providers.tf` in root module.
+* refactor: use SSH in module source.
+
 ## 3.0.0
 
 * feat (BREAKING): Allow multiple SSH key per user. The attribute `public_ssh_key` of `users` object is now rename to `public_ssh_keys`
