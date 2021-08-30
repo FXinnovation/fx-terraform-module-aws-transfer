@@ -29,7 +29,7 @@ With external VPC endpoint
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_vpc"></a> [vpc](#module\_vpc) | terraform-aws-modules/vpc/aws | 2.78.0 |
+| <a name="module_vpc"></a> [vpc](#module\_vpc) | git::https://scm.dazzlingwrench.fxinnovation.com/fxinnovation-public/mirror-terraform-module-aws-vpc.git | v3.6.0 |
 | <a name="module_vpc_external_vpce"></a> [vpc\_external\_vpce](#module\_vpc\_external\_vpce) | ../.. | n/a |
 
 ## Resources
