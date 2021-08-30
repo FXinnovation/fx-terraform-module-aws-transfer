@@ -28,7 +28,7 @@
 | Name | Source | Version |
 |------|--------|---------|
 | <a name="module_default"></a> [default](#module\_default) | ../.. | n/a |
-| <a name="module_s3"></a> [s3](#module\_s3) | git::https://scm.dazzlingwrench.fxinnovation.com/fxinnovation-public/terraform-module-aws-bucket-s3.git | 2.1.0 |
+| <a name="module_s3"></a> [s3](#module\_s3) | git::https://scm.dazzlingwrench.fxinnovation.com/fxinnovation-public/terraform-module-aws-bucket-s3.git | 3.0.0 |
 | <a name="module_vpc"></a> [vpc](#module\_vpc) | terraform-aws-modules/vpc/aws | 2.78.0 |
 
 ## Resources

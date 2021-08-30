@@ -50,7 +50,7 @@ module "vpc" {
 }
 
 module "s3" {
-  source = "git::https://scm.dazzlingwrench.fxinnovation.com/fxinnovation-public/terraform-module-aws-bucket-s3.git?ref=2.1.0"
+  source = "git::https://scm.dazzlingwrench.fxinnovation.com/fxinnovation-public/terraform-module-aws-bucket-s3.git?ref=3.0.0"
 
   name = local.random_name
 
