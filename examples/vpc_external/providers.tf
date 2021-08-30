@@ -9,6 +9,4 @@ provider "aws" {
   }
 }
 
-provider "random" {
-
-}
+provider "random" {}
