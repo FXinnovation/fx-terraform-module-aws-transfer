@@ -19,7 +19,7 @@ data "aws_availability_zones" "available" {
 data "aws_region" "current" {}
 
 module "vpc" {
-  source = "git::https://scm.dazzlingwrench.fxinnovation.com/fxinnovation-public/mirror-terraform-module-aws-vpc.git?ref=v3.6.0"
+  source = "git::ssh://git@scm.dazzlingwrench.fxinnovation.com:2222/fxinnovation-public/mirror-terraform-module-aws-vpc.git?ref=v3.6.0"
 
   name = random_string.this.result
 
