@@ -19,21 +19,21 @@ $ terraform apply
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.14 |
 | <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 3.5 |
-| <a name="requirement_random"></a> [random](#requirement\_random) | >= 3.1 |
+| <a name="requirement_random"></a> [random](#requirement\_random) | >= 3.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
 | <a name="provider_aws"></a> [aws](#provider\_aws) | >= 3.5 |
-| <a name="provider_random"></a> [random](#provider\_random) | >= 3.1 |
+| <a name="provider_random"></a> [random](#provider\_random) | >= 3.0 |
 
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_s3"></a> [s3](#module\_s3) | git::https://scm.dazzlingwrench.fxinnovation.com/fxinnovation-public/terraform-module-aws-bucket-s3.git | 3.0.0 |
-| <a name="module_vpc"></a> [vpc](#module\_vpc) | git::https://scm.dazzlingwrench.fxinnovation.com/fxinnovation-public/mirror-terraform-module-aws-vpc.git | v3.6.0 |
+| <a name="module_s3"></a> [s3](#module\_s3) | git::ssh://git@scm.dazzlingwrench.fxinnovation.com:2222/fxinnovation-public/terraform-module-aws-bucket-s3.git | 3.0.0 |
+| <a name="module_vpc"></a> [vpc](#module\_vpc) | git::ssh://git@scm.dazzlingwrench.fxinnovation.com:2222/fxinnovation-public/mirror-terraform-module-aws-vpc.git | v3.6.0 |
 | <a name="module_vpc_with_policy"></a> [vpc\_with\_policy](#module\_vpc\_with\_policy) | ../.. | n/a |
 
 ## Resources

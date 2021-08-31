@@ -19,20 +19,20 @@ $ terraform apply
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.14 |
 | <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 3.5 |
-| <a name="requirement_random"></a> [random](#requirement\_random) | >= 3.1 |
+| <a name="requirement_random"></a> [random](#requirement\_random) | >= 3.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
 | <a name="provider_aws"></a> [aws](#provider\_aws) | >= 3.5 |
-| <a name="provider_random"></a> [random](#provider\_random) | >= 3.1 |
+| <a name="provider_random"></a> [random](#provider\_random) | >= 3.0 |
 
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_vpc"></a> [vpc](#module\_vpc) | git::https://scm.dazzlingwrench.fxinnovation.com/fxinnovation-public/mirror-terraform-module-aws-vpc.git | v3.6.0 |
+| <a name="module_vpc"></a> [vpc](#module\_vpc) | git::ssh://git@scm.dazzlingwrench.fxinnovation.com:2222/fxinnovation-public/mirror-terraform-module-aws-vpc.git | v3.6.0 |
 | <a name="module_vpc_external_vpce"></a> [vpc\_external\_vpce](#module\_vpc\_external\_vpce) | ../.. | n/a |
 
 ## Resources

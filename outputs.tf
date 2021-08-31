@@ -26,6 +26,7 @@ output "vpc_endpoint_route53_hosted_zone_id" {
   value = element(concat(data.aws_vpc_endpoint.this.*.dns_entry.0.hosted_zone_id, [""]), 0)
 }
 
+
 #####
 # IAM
 #####
@@ -46,6 +47,7 @@ output "iam_cloud_watch_iam_policy_name" {
   value = element(concat(aws_iam_policy.cloud_watch.*.name, [""]), 0)
 }
 
+
 #####
 # VPC security group
 #####
@@ -57,6 +59,7 @@ output "security_group_arn" {
 output "security_group_id" {
   value = element(concat(aws_security_group.this.*.id, [""]), 0)
 }
+
 
 #####
 # Users

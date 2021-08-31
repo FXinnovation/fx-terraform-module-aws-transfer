@@ -13,7 +13,7 @@
 * chore: bumps `terraform` + providers versions in examples:
   - pins `terraform` to `>= 0.14`.
   - pins `aws` provider to `>= 3.5`.
-  - pins `random` provider to `>= 3.1`.
+  - pins `random` provider to `>= 3.0`.
 * refactor: get rid of useless `providers.tf` in root module.
 * refactor: use SSH in module source.
 
