@@ -4,9 +4,12 @@ With external VPC endpoint
 
 ## Usage
 
+To run this example, you need to execute:
+
 ```
-# terraform init
-# terraform apply
+$ terraform init
+$ terraform plan
+$ terraform apply
 ```
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
