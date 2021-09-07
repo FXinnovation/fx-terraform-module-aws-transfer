@@ -19,8 +19,7 @@ data "aws_availability_zones" "available" {
 data "aws_region" "current" {}
 
 module "vpc" {
-  source  = "terraform-aws-modules/vpc/aws"
-  version = "2.78.0"
+  source = "git::ssh://git@scm.dazzlingwrench.fxinnovation.com:2222/fxinnovation-public/mirror-terraform-module-aws-vpc.git?ref=v3.6.0"
 
   name = random_string.this.result
 

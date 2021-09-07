@@ -32,8 +32,7 @@ data "aws_iam_policy_document" "sts_transfer" {
 }
 
 module "vpc" {
-  source  = "terraform-aws-modules/vpc/aws"
-  version = "2.78.0"
+  source = "git::ssh://git@scm.dazzlingwrench.fxinnovation.com:2222/fxinnovation-public/mirror-terraform-module-aws-vpc.git?ref=v3.6.0"
 
   name = random_string.this.result
 
@@ -50,7 +49,7 @@ module "vpc" {
 }
 
 module "s3" {
-  source = "git::https://scm.dazzlingwrench.fxinnovation.com/fxinnovation-public/terraform-module-aws-bucket-s3.git?ref=2.1.0"
+  source = "git::ssh://git@scm.dazzlingwrench.fxinnovation.com:2222/fxinnovation-public/terraform-module-aws-bucket-s3.git?ref=3.0.0"
 
   name = local.random_name
 

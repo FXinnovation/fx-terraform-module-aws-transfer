@@ -43,6 +43,7 @@ resource "aws_transfer_server" "this" {
   )
 }
 
+
 #####
 # Security group
 #####
@@ -111,6 +112,7 @@ resource "aws_security_group_rule" "this_out_sg" {
   security_group_id        = element(concat(aws_security_group.this.*.id, [""]), 0)
 }
 
+
 #####
 # Cloud watch IAM
 #####
@@ -165,6 +167,7 @@ resource "aws_iam_role_policy_attachment" "cloud_watch" {
   role       = aws_iam_role.cloud_watch.0.name
   policy_arn = aws_iam_policy.cloud_watch.0.arn
 }
+
 
 #####
 # Users
