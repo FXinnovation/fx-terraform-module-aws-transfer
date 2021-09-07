@@ -31,8 +31,8 @@ $ terraform apply
 | Name | Source | Version |
 |------|--------|---------|
 | <a name="module_default"></a> [default](#module\_default) | ../.. | n/a |
-| <a name="module_s3"></a> [s3](#module\_s3) | git::https://scm.dazzlingwrench.fxinnovation.com/fxinnovation-public/terraform-module-aws-bucket-s3.git | 3.0.0 |
-| <a name="module_vpc"></a> [vpc](#module\_vpc) | git::https://scm.dazzlingwrench.fxinnovation.com/fxinnovation-public/mirror-terraform-module-aws-vpc.git | v3.6.0 |
+| <a name="module_s3"></a> [s3](#module\_s3) | git::ssh://git@scm.dazzlingwrench.fxinnovation.com:2222/fxinnovation-public/terraform-module-aws-bucket-s3.git | 3.0.0 |
+| <a name="module_vpc"></a> [vpc](#module\_vpc) | git::ssh://git@scm.dazzlingwrench.fxinnovation.com:2222/fxinnovation-public/mirror-terraform-module-aws-vpc.git | v3.6.0 |
 
 ## Resources
 
