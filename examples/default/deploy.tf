@@ -32,7 +32,7 @@ data "aws_iam_policy_document" "sts_transfer" {
 }
 
 module "vpc" {
-  source = "git::ssh://git@scm.dazzlingwrench.fxinnovation.com:2222/fxinnovation-public/mirror-terraform-module-aws-vpc.git?ref=v3.6.0"
+  source = "git::ssh://git@scm.dazzlingwrench.fxinnovation.com:2222/fxinnovation-public/mirror-terraform-module-aws-vpc.git?ref=v3.7.0"
 
   name = random_string.this.result
 
