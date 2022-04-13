@@ -32,7 +32,7 @@ $ terraform apply
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_vpc"></a> [vpc](#module\_vpc) | git::ssh://git@github.com/FXinnovation/fx-mirror-terraform-module-aws-vpc.git | v3.6.0 |
+| <a name="module_vpc"></a> [vpc](#module\_vpc) | github.com/FXinnovation/fx-mirror-terraform-module-aws-vpc.git | v3.6.0 |
 | <a name="module_vpc_external_vpce"></a> [vpc\_external\_vpce](#module\_vpc\_external\_vpce) | ../.. | n/a |
 
 ## Resources

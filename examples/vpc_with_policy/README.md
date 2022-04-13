@@ -32,8 +32,8 @@ $ terraform apply
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_s3"></a> [s3](#module\_s3) | git::ssh://git@github.com/FXinnovation/fx-terraform-module-aws-bucket-s3.git | 3.0.0 |
-| <a name="module_vpc"></a> [vpc](#module\_vpc) | git::ssh://git@github.com/FXinnovation/fx-mirror-terraform-module-aws-vpc.git | v3.6.0 |
+| <a name="module_s3"></a> [s3](#module\_s3) | github.com/FXinnovation/fx-terraform-module-aws-bucket-s3.git | 3.0.0 |
+| <a name="module_vpc"></a> [vpc](#module\_vpc) | github.com/FXinnovation/fx-mirror-terraform-module-aws-vpc.git | v3.6.0 |
 | <a name="module_vpc_with_policy"></a> [vpc\_with\_policy](#module\_vpc\_with\_policy) | ../.. | n/a |
 
 ## Resources
