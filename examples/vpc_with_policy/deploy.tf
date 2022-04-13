@@ -32,7 +32,7 @@ data "aws_iam_policy_document" "sts_transfer" {
 }
 
 module "vpc" {
-  source = "git::ssh://git@github.com/FXinnovation/fx-mirror-terraform-module-aws-vpc.git?ref=v3.6.0"
+  source = "github.com/FXinnovation/fx-mirror-terraform-module-aws-vpc.git?ref=v3.6.0"
 
   name = random_string.this.result
 
@@ -49,7 +49,7 @@ module "vpc" {
 }
 
 module "s3" {
-  source = "git::ssh://git@github.com/FXinnovation/fx-terraform-module-aws-bucket-s3.git?ref=3.0.0"
+  source = "github.com/FXinnovation/fx-terraform-module-aws-bucket-s3.git?ref=3.0.0"
 
   name = local.random_name
 
